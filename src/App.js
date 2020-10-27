@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.scss';
 
 const sampleCard = {
@@ -8,32 +8,48 @@ const sampleCard = {
   favorite: false,
 }
 
-const App = () => {
- 
-  return(
-    <div className="cardContainer">
-      <img className="cardImg"
-      src={sampleCard.image}
-      alt={sampleCard.title}
-        />
-      <h2 className="cardTitle">
-        {sampleCard.title}
-      </h2>
-      <p className="cardDescription">{sampleCard.description}</p>
-      <div className="cardIcons">
-        <div className="cardIcon">
+class App extends Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      isFavorite: sampleCard.favorite
+    };
+  }
+
+  isFavorite = () => {
+    const notFavorite = !this.state.isFavorite;
+    this.setState({isFavorite: notFavorite})
+  }
+
+  render(){
+    return(
+      <div className="cardContainer">
+        <img className="cardImg"
+        src={sampleCard.image}
+        alt={sampleCard.title}
+          />
+        <h2 className="cardTitle">
+          {sampleCard.title}
+        </h2>
+        <p className="cardDescription">{sampleCard.description}</p>
+        <div className="cardIcons">
+          <div className="cardIcon">
           <div 
-          className="fav">&#9733;
+            onClick={this.isFavorite}
+            className={this.state.isFavorite ? "fav" : "notFav"}>&#9733;
+            </div>
+            <p>FAVORITE</p>
           </div>
-          <p>FAVORITE</p>
-        </div>
-        <div className="cardIcon">
-          <div className="share">&#10150;</div> 
-          <p>SHARE</p>
+          <div className="cardIcon">
+            <div className="share">&#10150;</div> 
+            <p>SHARE</p>
+          </div>
         </div>
       </div>
-    </div>
-    );
+      );
+  }
 }
+
+
 
 export default App;

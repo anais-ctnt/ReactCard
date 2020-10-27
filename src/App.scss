@@ -28,6 +28,7 @@ body {
   width: 100%;
   box-shadow: 0px 6px 11px -4px rgba(0, 0, 0, 0.5);
 }
+
 .cardTitle {
   padding: 0.4rem;
 }
@@ -48,6 +49,11 @@ body {
   display: flex;
   align-items: baseline;
   padding: 0.5rem 0.5rem;
+}
+
+.notFav {
+  color: rgb(133, 133, 133);
+  margin-right: 0.4rem;
 }
 
 .fav {
